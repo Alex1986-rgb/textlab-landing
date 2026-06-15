@@ -18,6 +18,10 @@ const articles = require('./content/articles');
 const { cases, reviews } = require('./content/site');
 const slides = require('./content/slides');
 const { svgForSlide } = require('./content/slide-render');
+const { about, legal } = require('./content/pages');
+
+// Яндекс.Метрика: впишите номер счётчика, чтобы включить аналитику на всех страницах
+const METRIKA_ID = '';
 
 // ---------- helpers ----------
 const esc = s => String(s == null ? '' : s)
@@ -61,9 +65,17 @@ ${extraLd.map(ld).join('\n')}
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${u('/assets/style.css')}">
+${metrika()}
 </head>
 <body>
 <a href="#main" class="skip">Перейти к содержанию</a>`;
+}
+
+function metrika(){
+  if(!METRIKA_ID) return '<!-- Yandex.Metrika: впишите номер счётчика в METRIKA_ID (build.js) и пересоберите -->';
+  return `<!-- Yandex.Metrika -->
+<script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');ym(${METRIKA_ID},'init',{clickmap:true,trackLinks:true,accurateTrackBounce:true});</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/${METRIKA_ID}" style="position:absolute;left:-9999px" alt=""></div></noscript>`;
 }
 
 function header(active){
@@ -75,8 +87,8 @@ function header(active){
       ${link(u('/services/'),'Услуги','services')}
       ${link(u('/portfolio.html'),'Портфолио','portfolio')}
       ${link(u('/cases.html'),'Кейсы','cases')}
-      ${link(u('/#pricing'),'Цены','pricing')}
       ${link(u('/blog/'),'Блог','blog')}
+      ${link(u('/about.html'),'О нас','about')}
       ${link(u('/#faq'),'FAQ','faq')}
     </nav>
     <div class="nav-cta">
@@ -105,8 +117,8 @@ function footer(extraScript){
       </div>
       <div class="foot-col"><h4>Услуги</h4>${sl}</div>
       <div class="foot-col"><h4>Агентство</h4>
-        <a href="${u('/cases.html')}">Кейсы</a><a href="${u('/portfolio.html')}">Портфолио</a>
-        <a href="${u('/blog/')}">Блог</a><a href="${u('/#pricing')}">Цены</a>
+        <a href="${u('/about.html')}">О компании</a><a href="${u('/cases.html')}">Кейсы</a>
+        <a href="${u('/portfolio.html')}">Портфолио</a><a href="${u('/blog/')}">Блог</a>
         <a href="${u('/services/')}">Все услуги</a>
       </div>
       <div class="foot-col"><h4>Контакты</h4>
@@ -118,7 +130,7 @@ function footer(extraScript){
     </div>
     <div class="foot-bottom">
       <span>© <span id="year">2026</span> ТекстЛаб. Все права защищены.</span>
-      <span>Политика конфиденциальности · Договор оферты</span>
+      <span><a href="${u('/privacy.html')}">Политика конфиденциальности</a> · <a href="${u('/offer.html')}">Договор оферты</a></span>
     </div>
   </div>
 </footer>
@@ -460,6 +472,71 @@ ${footer()}`;
   write('cases.html', head({title:'Кейсы копирайтинг-агентства ТекстЛаб — результаты в цифрах',desc:'Подробные кейсы ТекстЛаб: SEO и блог, карточки маркетплейсов, лендинги, рассылки, SMM, PR. Задача, решение и измеримый результат каждого проекта.',url,extraLd:[breadcrumbLd(crumbItems)]}) + body);
 }
 
+// ---------- ABOUT ----------
+function renderAbout(){
+  const url = `${ABS}/about.html`;
+  const crumbItems=[{label:'Главная',href:u('/'),abs:ABS+'/'},{label:'О компании',abs:url}];
+  const orgLd = {"@context":"https://schema.org","@type":"Organization","name":"ТекстЛаб",
+    "url":ABS+'/',"email":"hello@textlab.ru","description":about.intro[0],"foundingDate":"2018","areaServed":"RU",
+    "logo":ABS+'/og-image.png'};
+  const body = `${header('about')}
+${crumbs(crumbItems)}
+<section class="phero"><div class="wrap">
+  <span class="eyebrow">О компании</span>
+  <h1>ТекстЛаб — агентство копирайтинга полного цикла</h1>
+  <p class="lead">${esc(about.intro[0])}</p>
+  <div class="meta-pills">${about.stats.map(s=>`<span class="pill"><b>${esc(s.n)}</b> ${esc(s.l)}</span>`).join('')}</div>
+</div></section>
+
+<section class="section tight"><div class="wrap-narrow prose reveal">
+  ${about.intro.slice(1).map(p=>`<p>${esc(p)}</p>`).join('')}
+</div></section>
+
+<section class="section soft"><div class="wrap">
+  <div class="center" style="margin-bottom:36px"><span class="eyebrow" style="justify-content:center">Принципы</span><h2 class="h2">Наши ценности в работе</h2></div>
+  <div class="grid g3">${about.values.map(v=>`<div class="card reveal"><div class="ic">${esc(v.ic)}</div><h3>${esc(v.t)}</h3><p>${esc(v.d)}</p></div>`).join('')}</div>
+</div></section>
+
+<section class="section"><div class="wrap">
+  <div class="center" style="margin-bottom:36px"><span class="eyebrow" style="justify-content:center">Команда</span><h2 class="h2">Кто работает над вашими текстами</h2><p class="lead center">Над каждым проектом — профильный автор и редактор. Знакомьтесь с командой.</p></div>
+  <div class="grid g3">${about.team.map(m=>`<div class="card reveal" style="text-align:center">
+    <div class="av" style="background:${m.color};width:72px;height:72px;border-radius:50%;display:grid;place-items:center;font-family:'Unbounded';font-weight:800;color:#fff;font-size:24px;margin:0 auto 14px">${esc(m.av)}</div>
+    <h3>${esc(m.name)}</h3><p style="color:var(--brand-2);font-weight:600;margin-bottom:8px">${esc(m.role)}</p><p>${esc(m.bio)}</p>
+  </div>`).join('')}</div>
+</div></section>
+
+<section class="section soft"><div class="wrap">
+  <div class="center" style="margin-bottom:36px"><span class="eyebrow" style="justify-content:center">Гарантии</span><h2 class="h2">Что мы гарантируем</h2></div>
+  <div class="grid g3">${about.guarantees.map(g=>`<div class="card reveal"><div class="ic">${esc(g.ic)}</div><h3>${esc(g.t)}</h3><p>${esc(g.d)}</p></div>`).join('')}</div>
+</div></section>
+
+${ctaBand('Доверьте тексты команде, которая отвечает за результат','Расскажите о задаче — пришлём расчёт и первые идеи за 15 минут. Бриф и консультация бесплатно.')}
+${footer()}`;
+  write('about.html', head({title:'О компании ТекстЛаб — команда, ценности и гарантии',desc:'О копирайтинг-агентстве ТекстЛаб: команда копирайтеров и редакторов, принципы работы, гарантии. 8 лет на рынке, 640+ проектов.',url,extraLd:[breadcrumbLd(crumbItems),orgLd]}) + body);
+}
+
+// ---------- LEGAL ----------
+function renderLegalPage(file, data){
+  const url = `${ABS}/${file}`;
+  const crumbItems=[{label:'Главная',href:u('/'),abs:ABS+'/'},{label:data.title,abs:url}];
+  const body = `${header('')}
+${crumbs(crumbItems)}
+<section class="phero"><div class="wrap-narrow">
+  <h1>${esc(data.title)}</h1>
+  <p class="lead">Последнее обновление: ${esc(data.updated)}</p>
+</div></section>
+<section class="section tight"><div class="wrap-narrow prose reveal">
+  ${data.sections.map(s=>`<h2>${esc(s.h2)}</h2>${s.p.map(p=>`<p>${esc(p)}</p>`).join('')}`).join('\n  ')}
+  <blockquote>Это типовой документ-шаблон. Перед публикацией замените поля в квадратных скобках (название организации, ИНН) на свои реквизиты и при необходимости согласуйте с юристом.</blockquote>
+</div></section>
+${footer()}`;
+  write(file, head({title:data.metaTitle,desc:data.metaDescription,url,extraLd:[breadcrumbLd(crumbItems)]}) + body);
+}
+function renderLegal(){
+  renderLegalPage('privacy.html', legal.privacy);
+  renderLegalPage('offer.html', legal.offer);
+}
+
 // ---------- SITEMAP ----------
 function renderSitemap(){
   const urls = [
@@ -468,6 +545,7 @@ function renderSitemap(){
     {loc:ABS+'/blog/',p:'0.8',f:'weekly'},
     {loc:ABS+'/portfolio.html',p:'0.7',f:'monthly'},
     {loc:ABS+'/cases.html',p:'0.7',f:'monthly'},
+    {loc:ABS+'/about.html',p:'0.6',f:'monthly'},
     ...services.map(s=>({loc:`${ABS}/services/${s.slug}.html`,p:'0.8',f:'monthly'})),
     ...articles.map(a=>({loc:`${ABS}/blog/${a.slug}.html`,p:'0.6',f:'monthly'}))
   ];
@@ -517,6 +595,8 @@ renderServicesIndex();
 articles.forEach(renderArticle);
 renderBlogIndex();
 renderCases();
+renderAbout();
+renderLegal();
 renderSitemap();
 renderExports();
 
@@ -525,6 +605,8 @@ console.log(`Готово:
   blog/          ${articles.length} статей + index
   portfolio.html ${slides.length} слайдов для маркетплейсов
   cases.html     ${cases.length} кейсов, ${reviews.length} отзывов
+  about.html     команда, ценности, гарантии
+  privacy/offer  юридические страницы
   assets/slides/ ${slides.length} SVG-слайдов
-  sitemap.xml    ${services.length+articles.length+5} URL
+  sitemap.xml    ${services.length+articles.length+6} URL
   export/        content.json, pages.csv, content.md`);
