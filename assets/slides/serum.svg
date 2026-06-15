@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#2a1726"/><stop offset="1" stop-color="#1a0f1a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff7eb6" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ff7eb6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="prod" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd166"/><stop offset="1" stop-color="#ff7eb6"/>
+    </linearGradient>
+    <linearGradient id="prodA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="1" stop-color="#ffd166"/>
+    </linearGradient>
+    <filter id="ds" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <circle cx="760" cy="150" r="280" fill="#ff7eb6" opacity="0.14"/>
+  <circle cx="120" cy="1080" r="240" fill="#ffd166" opacity="0.1"/>
+
+  <!-- brand -->
+  <rect x="60" y="54" width="188" height="56" rx="14" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.16)"/>
+  <text x="154" y="92" text-anchor="middle" font-size="28" font-weight="800" letter-spacing="2" fill="#fff">GLOWLAB</text>
+  <g>
+    <rect x="654" y="54" width="186" height="56" rx="28" fill="#ffd166"/>
+    <text x="747" y="92" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="30" font-weight="800" fill="#0c0e16">4.9 ★</text>
+  </g>
+
+  <!-- headline -->
+  <text x="60" y="232" font-size="78" font-weight="800" fill="#fff" letter-spacing="-1">
+    <tspan x="60" dy="0">Сыворотка с</tspan><tspan x="60" dy="86">витамином C</tspan>
+  </text>
+  <rect x="62" y="344" width="150" height="10" rx="5" fill="#ff7eb6"/>
+  <text x="62" y="410" font-size="34" font-weight="600" fill="#ff7eb6">Сияние кожи за 14 дней</text>
+
+  <!-- product -->
+  <circle cx="450" cy="630" r="250" fill="url(#glow)"/>
+  <g transform="translate(0,58) translate(450,600) scale(0.9) translate(-450,-600)">
+      <rect x="408" y="372" width="84" height="40" rx="10" fill="url(#prodA)"/>
+      <rect x="420" y="332" width="60" height="46" rx="20" fill="url(#prodA)"/>
+      <rect x="416" y="404" width="68" height="40" fill="url(#prodA)"/>
+      <rect x="362" y="438" width="176" height="332" rx="30" fill="url(#prod)" filter="url(#ds)"/>
+      <rect x="392" y="500" width="116" height="150" rx="16" fill="rgba(255,255,255,.1)"/>
+      <rect x="384" y="452" width="40" height="300" rx="20" fill="rgba(255,255,255,.18)"/></g>
+
+  <!-- benefits -->
+  <g>
+    <rect x="60" y="836" width="780" height="84" rx="20" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/>
+    <circle cx="104" cy="878" r="22" fill="#ff7eb6"/>
+    <path d="M93 878 l8 9 l14 -17" fill="none" stroke="#0c0e16" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="146" y="888" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="29" font-weight="700" fill="#fff">−40% пигментации за 4 недели</text>
+  </g>
+  <g>
+    <rect x="60" y="926" width="780" height="84" rx="20" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/>
+    <circle cx="104" cy="968" r="22" fill="#ff7eb6"/>
+    <path d="M93 968 l8 9 l14 -17" fill="none" stroke="#0c0e16" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="146" y="978" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="29" font-weight="700" fill="#fff">Гиалуроновая кислота + ниацинамид</text>
+  </g>
+  <g>
+    <rect x="60" y="1016" width="780" height="84" rx="20" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/>
+    <circle cx="104" cy="1058" r="22" fill="#ff7eb6"/>
+    <path d="M93 1058 l8 9 l14 -17" fill="none" stroke="#0c0e16" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="146" y="1068" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="29" font-weight="700" fill="#fff">Без парабенов и отдушек</text>
+  </g>
+
+  <!-- guarantee -->
+  <rect x="60" y="1112" width="780" height="62" rx="18" fill="#ff7eb6" opacity="0.16"/>
+  <rect x="60" y="1112" width="780" height="62" rx="18" fill="none" stroke="#ff7eb6" stroke-opacity="0.5"/>
+  <circle cx="104" cy="1143" r="16" fill="#ff7eb6"/>
+  <path d="M95 1143 l6 7 l11 -13" fill="none" stroke="#0c0e16" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="136" y="1153" font-size="27" font-weight="700" fill="#fff">Гипоаллергенно · дерматолог-тест</text>
+</svg>

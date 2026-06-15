@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#16280f"/><stop offset="1" stop-color="#0d1a08"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#a3e635" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#a3e635" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="prod" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#34d399"/><stop offset="1" stop-color="#a3e635"/>
+    </linearGradient>
+    <linearGradient id="prodA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="1" stop-color="#34d399"/>
+    </linearGradient>
+    <filter id="ds" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <circle cx="760" cy="150" r="280" fill="#a3e635" opacity="0.14"/>
+  <circle cx="120" cy="1080" r="240" fill="#34d399" opacity="0.1"/>
+
+  <!-- brand -->
+  <rect x="60" y="54" width="188" height="56" rx="14" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.16)"/>
+  <text x="154" y="92" text-anchor="middle" font-size="28" font-weight="800" letter-spacing="2" fill="#fff">AQUAFIT</text>
+  <g>
+    <rect x="706" y="54" width="134" height="56" rx="28" fill="#a3e635"/>
+    <text x="773" y="92" text-anchor="middle" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="30" font-weight="800" fill="#0c0e16">NEW</text>
+  </g>
+
+  <!-- headline -->
+  <text x="60" y="232" font-size="78" font-weight="800" fill="#fff" letter-spacing="-1">
+    <tspan x="60" dy="0">Бутылка</tspan><tspan x="60" dy="86">для воды 1 л</tspan>
+  </text>
+  <rect x="62" y="344" width="150" height="10" rx="5" fill="#a3e635"/>
+  <text x="62" y="410" font-size="34" font-weight="600" fill="#a3e635">Пей больше — успевай быстрее</text>
+
+  <!-- product -->
+  <circle cx="450" cy="630" r="250" fill="url(#glow)"/>
+  <g transform="translate(0,58) translate(450,600) scale(0.9) translate(-450,-600)">
+      <rect x="406" y="372" width="88" height="64" rx="16" fill="url(#prodA)"/>
+      <rect x="432" y="346" width="36" height="34" rx="8" fill="url(#prodA)"/>
+      <path d="M372 470 q0 -34 34 -34 h88 q34 0 34 34 v270 q0 36 -36 36 h-84 q-36 0 -36 -36 z" fill="url(#prod)" filter="url(#ds)"/>
+      <rect x="392" y="520" width="120" height="150" rx="14" fill="rgba(255,255,255,.1)"/>
+      <rect x="392" y="476" width="34" height="286" rx="17" fill="rgba(255,255,255,.18)"/></g>
+
+  <!-- benefits -->
+  <g>
+    <rect x="60" y="836" width="780" height="84" rx="20" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/>
+    <circle cx="104" cy="878" r="22" fill="#a3e635"/>
+    <path d="M93 878 l8 9 l14 -17" fill="none" stroke="#0c0e16" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="146" y="888" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="29" font-weight="700" fill="#fff">Шкала объёма и мотивация</text>
+  </g>
+  <g>
+    <rect x="60" y="926" width="780" height="84" rx="20" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/>
+    <circle cx="104" cy="968" r="22" fill="#a3e635"/>
+    <path d="M93 968 l8 9 l14 -17" fill="none" stroke="#0c0e16" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="146" y="978" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="29" font-weight="700" fill="#fff">Не протекает в сумке</text>
+  </g>
+  <g>
+    <rect x="60" y="1016" width="780" height="84" rx="20" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.12)"/>
+    <circle cx="104" cy="1058" r="22" fill="#a3e635"/>
+    <path d="M93 1058 l8 9 l14 -17" fill="none" stroke="#0c0e16" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="146" y="1068" font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif" font-size="29" font-weight="700" fill="#fff">Тритан · без запаха пластика</text>
+  </g>
+
+  <!-- guarantee -->
+  <rect x="60" y="1112" width="780" height="62" rx="18" fill="#a3e635" opacity="0.16"/>
+  <rect x="60" y="1112" width="780" height="62" rx="18" fill="none" stroke="#a3e635" stroke-opacity="0.5"/>
+  <circle cx="104" cy="1143" r="16" fill="#a3e635"/>
+  <path d="M95 1143 l6 7 l11 -13" fill="none" stroke="#0c0e16" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="136" y="1153" font-size="27" font-weight="700" fill="#fff">Можно мыть в посудомойке</text>
+</svg>
